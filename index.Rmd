@@ -1,0 +1,51 @@
+---
+title: "Wittenberg University - Master of Science in Analytics"
+subtitle: "ANLT 510 - Advanced Statistics and Modeling"
+author: "Day 1: Getting Comfortable with Uncertainty"
+date: "`r format(Sys.Date(), format = '%d %b %Y')`"
+output: 
+  slidy_presentation:
+    smart: no
+    fig_caption: yes
+graphics: yes
+params:
+  day1_date: "Oct 15"
+  day2_date: "Oct 16"
+  day3_date: "Nov 12"
+---
+
+# Course Overview
+
+```{r load-libs, echo=FALSE}
+library(knitr)
+
+#library(reticulate)
+library(rprojroot)
+#reticulate::use_python("C:/Users/Aubur/Anaconda3/python.exe")
+find_resource <- function(.dir, .file, .root = find_root(is_git_root)){
+  
+  return(file.path(.root, "resources",.dir, .file))
+  
+}
+```
+
+
+```{r master-setup, include=!FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      comment = NA, 
+                      fig.height = 10,
+                      fig.width = 10,
+                      fig.align = "center", 
+                      message = F)
+
+shiny::includeCSS(find_resource("css","flatly-style.css"))
+shiny::includeCSS(find_resource("css","witt-title.css"))
+shiny::includeScript(find_resource("js","jquery.min.js"))
+shiny::includeScript(find_resource("js","jkf-scroll.js"))
+```
+
+```{r, child="resources/content/course_overview.Rmd"}
+```
+
+```{r, child="resources/content/ml_algorithms.Rmd"}
+```
